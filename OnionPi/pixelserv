@@ -1,0 +1,26 @@
+### BEGIN INIT INFO
+# Provides:          pixelserv
+# Required-Start:    $network
+# Required-Stop:     $network
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: pixelserv server for ad blocking
+# Description:       Server for serving 1x1 pixels
+### END INIT INFO
+
+case "$1" in
+   start)
+     echo "pixelserv: starting"
+     /usr/local/bin/pixelserv &
+     ;;
+   stop)
+     echo "pixelserv: stopping"
+     killall pixelserv
+     ;;
+   *)
+     echo "Usage: service $0 {start|stop}"
+     exit 1
+     ;;
+esac
+
+exit 0
